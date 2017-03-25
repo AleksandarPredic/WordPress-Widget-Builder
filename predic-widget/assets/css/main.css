@@ -1,0 +1,18 @@
+/**
+ * Admin css to further adjust admin form fields
+ */
+
+/* Single uploader image field */
+.predic-widget-img-uploader__preview {
+    max-width: 200px;
+    display: block;
+}
+
+.predic-widget-img-uploader__preview img {
+    max-width: 100%;
+    height: auto;
+}
+
+.predic-widget-img-uploader__wrapper button {
+    margin-right: 5px !important;
+}
