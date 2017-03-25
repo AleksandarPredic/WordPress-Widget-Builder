@@ -4,18 +4,18 @@ The WordPress Widget Builder serves as a framework to quickly build your WordPre
 
 * **Requires at least:** 4.0.0 
 
-#### Please read our [Wiki documentation](./Wiki) also to find more details about using the framework
+#### Please read our [Wiki documentation](https://github.com/AleksandarPredic/WordPress-Widget-Builder/wiki) also to find more details about using the framework
 
 ## Table of contents
-1. [Description](#1-description)
-2. [Features](#2-features)
-3. [Licence](#7-licence)
-4. [Chengelog](#8-chengelog)
-5. [Developers](#9-developers)
-6. [Author information](#10-author-information)
+[Description](#description)
+[Features](#features)
+[Licence](#licence)
+[Chengelog](#chengelog)
+[Developers](#developers)
+[Author information](#author-information)
 
 
-## 1. Description
+## Description
 
 The **WordPress Widget Builder** serves as a framework to quickly build your WordPress widgets.
 
@@ -26,7 +26,7 @@ In addition the framework will pass two additional parameters to your function o
 Minimum required WordPress version is 4.0.0
 
 
-## 2. Features
+## Features
 
 * The Widget Bulder is fully-based on the [WordPress Widget API](https://codex.wordpress.org/Widgets_API).
 * Widget admin is automatically created from [configuration array](./Wiki/Usage).
@@ -39,7 +39,7 @@ Minimum required WordPress version is 4.0.0
 * You can use function or class method to handle frontend output.
 
 
-## 3. Licence
+## Licence
 
 The WordPress Widget Boilerplate is licensed under the GPL v2 or later.
 
@@ -50,20 +50,20 @@ The WordPress Widget Boilerplate is licensed under the GPL v2 or later.
 >You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 
-## 4. Chengelog
+## Chengelog
 
 
 #### 1.0.0 (24th March 2017)
 * Official release
 
 
-## 5. Developers
+## Developers
 
 Miss a feature? Pull requests are welcome.
 
 The project is open-source and hopefully will receive contributions from awesome WordPress Developers throughout the world.
 
 
-## 6. Author information
+## Author information
 
 The WordPress Widget Boilerplate was originally started and is maintained by [Aleksandar Predic](https://github.com/AleksandarPredic).
