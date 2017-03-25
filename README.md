@@ -7,12 +7,13 @@ The WordPress Widget Builder serves as a framework to quickly build your WordPre
 #### Please read our [Wiki documentation](https://github.com/AleksandarPredic/WordPress-Widget-Builder/wiki) also to find more details about using the framework
 
 ## Table of contents
-[Description](#description)
-[Features](#features)
-[Licence](#licence)
-[Chengelog](#chengelog)
-[Developers](#developers)
-[Author information](#author-information)
+
+* [Description](#description)
+* [Features](#features)
+* [Licence](#licence)
+* [Chengelog](#chengelog)
+* [Developers](#developers)
+* [Author information](#author-information)
 
 
 ## Description
@@ -22,8 +23,6 @@ The **WordPress Widget Builder** serves as a framework to quickly build your Wor
 You can make configuration array of desired widget name, description, fields... and the framework will create widget admin part for you. Leaving you to worry only about widget frontend output. 
 
 In addition the framework will pass two additional parameters to your function or method that handles frontend output: **$form_fields** and **$widget_id**. See more details about them on [features page](./Wiki/Features).
-
-Minimum required WordPress version is 4.0.0
 
 
 ## Features
