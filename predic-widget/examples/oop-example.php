@@ -2,6 +2,8 @@
 
 /**
  * Example widget using class
+ * 
+ * DEMO: Include this file in your theme functions.php file or plugin
  */
 class Example_Widget {
     

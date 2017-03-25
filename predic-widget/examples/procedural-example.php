@@ -2,6 +2,8 @@
 
 /**
  * Example widget
+ * 
+ * DEMO: Include this file in your theme functions.php file or plugin
  */
 
 /**
