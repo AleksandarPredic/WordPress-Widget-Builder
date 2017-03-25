@@ -22,13 +22,13 @@ The **WordPress Widget Builder** serves as a framework to quickly build your Wor
 
 You can make configuration array of desired widget name, description, fields... and the framework will create widget admin part for you. Leaving you to worry only about widget frontend output. 
 
-In addition the framework will pass two additional parameters to your function or method that handles frontend output: **$form_fields** and **$widget_id**. See more details about them on [features page](./Wiki/Features).
+In addition the framework will pass two additional parameters to your function or method that handles frontend output: **$form_fields** and **$widget_id**. See more details about them on [features page](https://github.com/AleksandarPredic/WordPress-Widget-Builder/wiki/Features).
 
 
 ## Features
 
 * The Widget Bulder is fully-based on the [WordPress Widget API](https://codex.wordpress.org/Widgets_API).
-* Widget admin is automatically created from [configuration array](./Wiki/Usage).
+* Widget admin is automatically created from [configuration array](https://github.com/AleksandarPredic/WordPress-Widget-Builder/wiki/Usage).
 * Frontend rendering function receive two additional params: $form_fields and $widget_id. 
 
     * **$form_fields** is used to pass admin form fields configuration array so you can set default same default values for vars as it the admin form. Example: If default select form field value is set for admin form, the same value can be retreived to be default value on frontend if somehow variable is not set or any other case. It will be easier to explain through examples.
