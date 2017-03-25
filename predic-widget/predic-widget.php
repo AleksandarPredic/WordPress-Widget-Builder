@@ -49,7 +49,7 @@ class Predic_Widget {
     private $version = '1.0.0';
 
     /**
-     * Configuration array to create widgets from
+     * Configuration arrays to create widgets from
      * 
      * @since 1.0.0
      * @var array
@@ -136,7 +136,12 @@ class Predic_Widget {
      */
     public function create_widgets() {
         
-        // Allow others to add more widgets to create automatically
+	   /**
+	    * Allow others to add more widgets to create automatically
+		* 
+		* @since 1.0.0
+		* @param $this->widgets Configuration arrays to create widgets from
+		*/
         $this->widgets = apply_filters( 'predic_defined_widgets_array', $this->widgets );
         
         if ( empty( $this->widgets ) ) {
