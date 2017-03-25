@@ -268,7 +268,8 @@ class Predic_Widget_Factory extends WP_Widget {
             
             /**
              * Allow other to add more custom fields
-             * @param array $php_classes List of field_type => php_class, to use to render field html
+			 * 
+             * @param array $php_classes List of field_type => array( 'class' => 'PHP_Class_Name', 'path' => 'class_filepath' ), to use to render field html
              * @return array List of field_type_id => array( 'class' => 'PHP_Class_Name', 'path' => 'class_filepath' )
              */
             $php_classes = apply_filters( 'predic_widget_fields_php_classes', $php_classes );
@@ -356,11 +357,11 @@ class Predic_Widget_Factory extends WP_Widget {
             $value = '';
             
             /**
-             * Allow user defined sanitization to be added later
+             * To do: add user defined sanitization
              */
             if ( isset( $new_instance[ $name ] ) ) {
                 
-                if ( 'textarea' === $field['type'] ) {
+                if ( strpos( $field['type'], 'textarea') !== false ) {
                     $value = $this->validate_allowed_html_tags( $new_instance[ $name ] );
                 } else {
                     $value = sanitize_text_field( $new_instance[ $name ] );
