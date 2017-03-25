@@ -133,10 +133,29 @@ class Custom_Textarea_Form_Field extends Predic_Widget_Form_Field {
  */
 function add_custom_form_field( $fields_classes ) {
 
+	/**
+	 * custom_textarea is your type when adding fields in configuration array
+	 */
 	$fields_classes['custom_textarea'] = array(
 		'class' => 'Custom_Textarea_Form_Field',
 		'path' => dirname( __FILE__ ) . '/custom-admin-form-field.php'
 	);
+	
+	/**
+	 * This is example of how you would add your custom field to 
+	 * form_fields configuration array
+	 * 
+	'form_fields' => array(
+
+		'custom_field_name' => array(
+			'type' => 'custom_textarea',
+			'label' => esc_html__( 'Label name:', 'textdomain' ),
+			'placeholder' => esc_html__( 'Placeholder text', 'textdomain' ),
+			'default' => esc_html__( 'Default text', 'textdomain' )
+		)
+
+	)
+	 */
 	
 	return $fields_classes;
 	
