@@ -1,4 +1,4 @@
-# WordPress Widget Builder
+# WordPress Widget Builder Framework
 
 The WordPress Widget Builder serves as a framework to quickly build your WordPress widgets.
 
