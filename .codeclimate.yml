@@ -29,5 +29,5 @@ ratings:
   - "**.js"
   - "**.php"
 exclude_paths: 
-  - "examples/"
+  - "predic-widget/examples/"
   - "LICENSE"
