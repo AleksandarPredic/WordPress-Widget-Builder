@@ -1,9 +1,27 @@
+---
 engines:
-  # ... CONFIG CONTENT ...
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+      - php
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
   phpmd:
     enabled: true
-    # ... CONFIG CONTENT ...
     checks:
       Controversial/CamelCaseClassName:
         enabled: false
-# ... CONFIG CONTENT ...
+ratings:
+  paths:
+  - "**.css"
+  - "**.js"
+  - "**.php"
+exclude_paths: 
+  - "examples/"
+  - "LICENSE"
