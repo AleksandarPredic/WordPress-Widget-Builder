@@ -1,5 +1,7 @@
 # WordPress Widget Builder Framework
 
+[![Code Climate](https://codeclimate.com/github/AleksandarPredic/WordPress-Widget-Builder/badges/gpa.svg)](https://codeclimate.com/github/AleksandarPredic/WordPress-Widget-Builder)
+
 The WordPress Widget Builder serves as a framework to quickly build your WordPress widgets.
 
 * **Requires at least:** 4.0.0 
