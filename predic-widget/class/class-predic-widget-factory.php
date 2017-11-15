@@ -38,12 +38,90 @@ class Predic_Widget_Factory extends WP_Widget {
     private $form_fields;
 
     /**
+     * Array of all PHP classes for fields to include and instantiate
+     *
+     * @since 1.0.1
+     * @var array
+     */
+    private $field_php_classes;
+
+    /**
      * Constructor
      * 
      * @since 1.0.0
      * @param array $atts widget configuration array
      */
     public function __construct(array $atts ) {
+
+        /**
+         * Supported fields and their PHP classes
+         */
+        $input_text_path = PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-input-field.php';
+        $php_classes = array(
+
+            // Input text and similar fields
+            'text' => array(
+                'class' => 'Predic_Widget_Input_Field',
+                'path' => $input_text_path
+            ),
+            'email' => array(
+                'class' => 'Predic_Widget_Input_Field',
+                'path' => $input_text_path
+            ),
+            'password' => array(
+                'class' => 'Predic_Widget_Input_Field',
+                'path' => $input_text_path
+            ),
+            'search' => array(
+                'class' => 'Predic_Widget_Input_Field',
+                'path' => $input_text_path
+            ),
+            'tel' => array(
+                'class' => 'Predic_Widget_Input_Field',
+                'path' => $input_text_path
+            ),
+            'url' => array(
+                'class' => 'Predic_Widget_Input_Field',
+                'path' => $input_text_path
+            ),
+            'button' => array(
+                'class' => 'Predic_Widget_Input_Field',
+                'path' => $input_text_path
+            ),
+            // Select field
+            'select' => array(
+                'class' => 'Predic_Widget_Select_Field',
+                'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-select-field.php'
+            ),
+            // Color field
+            'color' => array(
+                'class' => 'Predic_Widget_Color_Field',
+                'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-color-field.php'
+            ),
+            // Single image uploader
+            'uploader_image' => array(
+                'class' => 'Predic_Widget_Image_Uploader_Field',
+                'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-image-uploader-field.php'
+            ),
+            // Textarea field
+            'textarea' => array(
+                'class' => 'Predic_Widget_Textarea_Field',
+                'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-textarea-field.php'
+            ),
+            // FontAwesome icon picker field
+            'fa-iconpicker' => array(
+                'class' => 'Predic_Widget_Fa_Iconpicker_Field',
+                'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-fa-iconpicker-field.php'
+            ),
+        );
+
+        /**
+         * Allow other to add more custom fields
+         *
+         * @param array $php_classes List of field_type => array( 'class' => 'PHP_Class_Name', 'path' => 'class_filepath' ), to use to render field html
+         * @return array List of field_type_id => array( 'class' => 'PHP_Class_Name', 'path' => 'class_filepath' )
+         */
+        $this->field_php_classes = apply_filters( 'predic_widget_fields_php_classes', $php_classes );
         
         /**
          * Default configuration array values that every configured widget must have
@@ -143,6 +221,11 @@ class Predic_Widget_Factory extends WP_Widget {
             $control_ops
         );
 
+        /**
+         * Add admin scripts for all fields that have method admin_scripts and are used in this widget
+         */
+        $this->fields_admin_scripts();
+
     }
 
     /**
@@ -208,81 +291,17 @@ class Predic_Widget_Factory extends WP_Widget {
             if ( is_int( $name ) ) {
                 trigger_error( strip_tags( sprintf( __( 'You should not use numbers as widget admin form field id. Id provided is: %d.', 'predic_widget' ), intval( $name ) ) ), E_USER_NOTICE );
             }
-            
-            /**
-             * Supported fields and their PHP classes
-             */
-            $input_text_path = PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-input-field.php';
-            $php_classes = array(
-                
-                // Input text and similar fields
-                'text' => array(
-                    'class' => 'Predic_Widget_Input_Field',
-                    'path' => $input_text_path
-                ),
-                'email' => array(
-                    'class' => 'Predic_Widget_Input_Field',
-                    'path' => $input_text_path
-                ),
-                'password' => array(
-                    'class' => 'Predic_Widget_Input_Field',
-                    'path' => $input_text_path
-                ),
-                'search' => array(
-                    'class' => 'Predic_Widget_Input_Field',
-                    'path' => $input_text_path
-                ),
-                'tel' => array(
-                    'class' => 'Predic_Widget_Input_Field',
-                    'path' => $input_text_path
-                ),
-                'url' => array(
-                    'class' => 'Predic_Widget_Input_Field',
-                    'path' => $input_text_path
-                ),
-                'button' => array(
-                    'class' => 'Predic_Widget_Input_Field',
-                    'path' => $input_text_path
-                ),
-                // Select field
-                'select' => array(
-                    'class' => 'Predic_Widget_Select_Field',
-                    'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-select-field.php'
-                ),
-                // Color field
-                'color' => array(
-                    'class' => 'Predic_Widget_Color_Field',
-                    'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-color-field.php'
-                ),
-                // Single image uploader
-                'uploader_image' => array(
-                    'class' => 'Predic_Widget_Image_Uploader_Field',
-                    'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-image-uploader-field.php'
-                ),
-                // Textarea field
-                'textarea' => array(
-                    'class' => 'Predic_Widget_Textarea_Field',
-                    'path' => PREDIC_WIDGET_ROOT_PATH . '/class/fields/class-predic-widget-textarea-field.php'
-                ),
-            );
-            
-            /**
-             * Allow other to add more custom fields
-			 * 
-             * @param array $php_classes List of field_type => array( 'class' => 'PHP_Class_Name', 'path' => 'class_filepath' ), to use to render field html
-             * @return array List of field_type_id => array( 'class' => 'PHP_Class_Name', 'path' => 'class_filepath' )
-             */
-            $php_classes = apply_filters( 'predic_widget_fields_php_classes', $php_classes );
 
-            $class = isset( $php_classes[ $field['type'] ]['class'] ) ? sanitize_text_field( $php_classes[ $field['type'] ]['class'] ) : false;
-            $class_path = isset( $php_classes[ $field['type'] ]['path'] ) ? sanitize_text_field( $php_classes[ $field['type'] ]['path'] ) : false;
-            
+            // Get field class and path, also may be one added by external user and not default framework field
+            $class = isset( $this->field_php_classes[ $field['type'] ]['class'] ) ? sanitize_text_field( $this->field_php_classes[ $field['type'] ]['class'] ) : false;
+            $class_path = isset( $this->field_php_classes[ $field['type'] ]['path'] ) ? sanitize_text_field( $this->field_php_classes[ $field['type'] ]['path'] ) : false;
+
             // If field type doesn't exist continue
             if ( empty( $class ) || empty( $class_path ) ) {
                 continue;
             }
-    
-            // Include field PHP class
+
+            // Include field PHP class and ones that are added by external user
             if ( file_exists( $class_path ) ) {
                     require_once $class_path;
             } else {
@@ -421,6 +440,39 @@ class Predic_Widget_Factory extends WP_Widget {
         
         return wp_kses( $content, $allowed_tags );
         
+    }
+
+    /**
+     * Add admin scripts for all fields that have method admin_scripts
+     * and are used in this widget
+     *
+     * @since 1.0.1
+     */
+    public function fields_admin_scripts() {
+
+/*var_dump($GLOBALS['wp_actions']);
+die();*/
+
+        $method = 'admin_scriptss';
+
+        foreach ( $this->field_php_classes as $class ) {
+
+            // Include field PHP class
+            if ( file_exists( $class['path'] ) ) {
+                require_once $class['path'];
+            } else {
+                trigger_error( strip_tags( sprintf( __( 'File %s does not exists.', 'predic_widget' ), $class['path'] ) ), E_USER_WARNING );
+                continue;
+            }
+
+            $class_name = isset( $class['class'] ) ? sanitize_text_field( $class['class'] ) : false;
+
+
+            if ( method_exists( $class_name, $method ) ) {
+                add_action( 'admin_enqueue_scripts', array( $class_name, $method ) );
+            }
+
+        }
     }
 
 }

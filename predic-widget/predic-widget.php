@@ -103,6 +103,7 @@ class Predic_Widget {
 		$this->define( 'PREDIC_WIDGET_ROOT_URL', plugins_url( '', __FILE__ ) );
 		$this->define( 'PREDIC_WIDGET_ROOT_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 		$this->define( 'PREDIC_WIDGET_ASSETS_URL', PREDIC_WIDGET_ROOT_URL . '/assets' );
+		$this->define( 'PREDIC_WIDGET_LIB_PATH', PREDIC_WIDGET_ROOT_PATH . '/lib' );
 	}
     
     /**
