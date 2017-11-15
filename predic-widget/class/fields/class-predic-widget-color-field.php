@@ -121,8 +121,6 @@ class Predic_Widget_Color_Field extends Predic_Widget_Form_Field {
         
         $html .= '/>';
         
-        $this->admin_scripts();
-        
         return $html;
     }
     
@@ -132,19 +130,17 @@ class Predic_Widget_Color_Field extends Predic_Widget_Form_Field {
 	 * 
 	 * @since 1.0.0
      */
-    private function admin_scripts() {
+    public static function admin_scripts() {
    
         // Default scripts
         wp_enqueue_script( 'wp-color-picker' );
-        wp_enqueue_style( 'wp-color-picker' ); 
-        
+        wp_enqueue_style( 'wp-color-picker' );
+
         /**
          * Overwrite Automattic Iris for enabled Alpha Channel in wpColorPicker
          * @see https://github.com/23r9i0/wp-color-picker-alpha
          */
-        if ( $this->alpha ) {
-            wp_enqueue_script( 'wp-color-picker-alpha', PREDIC_WIDGET_ASSETS_URL . '/vendor/wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), self::$version, true );
-        }
+        wp_enqueue_script( 'wp-color-picker-alpha', PREDIC_WIDGET_ASSETS_URL . '/vendor/wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), self::$version, true );
         
         // Color picker init
         wp_enqueue_script( 'predic-widget-color-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/color-field.js', array( 'wp-color-picker' ), self::$version, true );

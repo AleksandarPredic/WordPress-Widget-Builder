@@ -137,9 +137,7 @@ class Predic_Widget_Image_Uploader_Field extends Predic_Widget_Form_Field {
         }
 
         // Close field wrapper
-        $html .= '</section>'; 
-        
-        $this->admin_scripts();
+        $html .= '</section>';
         
         return $html;
     }
@@ -150,7 +148,7 @@ class Predic_Widget_Image_Uploader_Field extends Predic_Widget_Form_Field {
 	 * 
 	 * @since 1.0.0
      */
-    private function admin_scripts() {
+    public static function admin_scripts() {
    
         // Default scripts
         wp_enqueue_media();

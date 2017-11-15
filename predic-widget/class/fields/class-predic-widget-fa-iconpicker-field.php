@@ -136,7 +136,7 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
      *
      * @since 1.0.1
      */
-    public static function admin_scriptss() {
+    public static function admin_scripts() {
 
         wp_enqueue_style( 'predic-widget-font-awesome', PREDIC_WIDGET_ASSETS_URL . '/vendor/font-awesome/css/font-awesome.min.css', array(), self::$version );
         wp_enqueue_style( 'predic-widget-fa-iconpicker-field', PREDIC_WIDGET_ASSETS_URL . '/css/fields/fa-iconpicker-field.css', array(), self::$version );

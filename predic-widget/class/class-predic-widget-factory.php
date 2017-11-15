@@ -450,10 +450,7 @@ class Predic_Widget_Factory extends WP_Widget {
      */
     public function fields_admin_scripts() {
 
-/*var_dump($GLOBALS['wp_actions']);
-die();*/
-
-        $method = 'admin_scriptss';
+        $method = 'admin_scripts';
 
         foreach ( $this->field_php_classes as $class ) {
 
