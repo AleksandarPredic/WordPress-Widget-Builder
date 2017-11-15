@@ -11,7 +11,7 @@ class Predic_Widget_Color_Field extends Predic_Widget_Form_Field {
 	 * @since 1.0.0
 	 * @var string
 	 */
-    private $version = '1.0.0';
+    private static $version = '1.0.0';
 	
 	/**
 	 * Generated field id
@@ -143,11 +143,11 @@ class Predic_Widget_Color_Field extends Predic_Widget_Form_Field {
          * @see https://github.com/23r9i0/wp-color-picker-alpha
          */
         if ( $this->alpha ) {
-            wp_enqueue_script( 'wp-color-picker-alpha', PREDIC_WIDGET_ASSETS_URL . '/vendor/wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $this->version, true );
+            wp_enqueue_script( 'wp-color-picker-alpha', PREDIC_WIDGET_ASSETS_URL . '/vendor/wp-color-picker-alpha/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), self::$version, true );
         }
         
         // Color picker init
-        wp_enqueue_script( 'predic-widget-color-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/color-field.js', array( 'wp-color-picker' ), $this->version, true );
+        wp_enqueue_script( 'predic-widget-color-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/color-field.js', array( 'wp-color-picker' ), self::$version, true );
         
     }
     
