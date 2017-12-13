@@ -64,10 +64,6 @@ class Predic_Widget_Factory extends WP_Widget {
                 'class' => 'Predic_Widget_Input_Field',
                 'path' => $input_text_path
             ),
-            'email' => array(
-                'class' => 'Predic_Widget_Input_Field',
-                'path' => $input_text_path
-            ),
             'password' => array(
                 'class' => 'Predic_Widget_Input_Field',
                 'path' => $input_text_path
@@ -77,10 +73,6 @@ class Predic_Widget_Factory extends WP_Widget {
                 'path' => $input_text_path
             ),
             'tel' => array(
-                'class' => 'Predic_Widget_Input_Field',
-                'path' => $input_text_path
-            ),
-            'url' => array(
                 'class' => 'Predic_Widget_Input_Field',
                 'path' => $input_text_path
             ),

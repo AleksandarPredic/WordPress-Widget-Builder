@@ -180,14 +180,14 @@ class Example_Widget {
 				 */
 				
 				'title' => array(
-					'type' => 'text', // Required  // Input type: text, email, password, search, tel, url, button
+					'type' => 'text', // Required  // Input type: text, password, search, tel, button
 					'label' => esc_html__( 'Title:', 'textdomain' ), // Optional
 					'placeholder' => esc_html__( 'Enter widget title here', 'textdomain' ), // Optional
 					'default' => esc_html__( 'Example widget', 'textdomain' ) // Optional
 				),
 				
 				'text_field_name' => array(
-					'type' => 'text', // Required  // Input type: text, email, password, search, tel, url, button
+					'type' => 'text', // Required  // Input type: text, password, search, tel, button
 					'label' => esc_html__( 'Label name:', 'textdomain' ), // Optional
 					'placeholder' => esc_html__( 'Placeholder text', 'textdomain' ), // Optional
 					'default' => esc_html__( 'Default text', 'textdomain' ) // Optional
