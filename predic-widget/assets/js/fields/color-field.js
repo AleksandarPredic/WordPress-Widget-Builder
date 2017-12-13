@@ -9,7 +9,7 @@
     var $colorFieldClass = '.predic-widget-color__field';
     
     // Handle widget admin screen init
-    $(document).ready(function(){
+    $(window).load(function(){
 
         // Init widgets on page load
         $($colorFieldClass).each(function(){
