@@ -139,7 +139,6 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
     public static function admin_scripts() {
 
         wp_enqueue_style( 'predic-widget-font-awesome', PREDIC_WIDGET_ASSETS_URL . '/vendor/font-awesome/css/font-awesome.min.css', array(), self::$version );
-        wp_enqueue_style( 'predic-widget-fa-iconpicker-field', PREDIC_WIDGET_ASSETS_URL . '/css/fields/fa-iconpicker-field.css', array(), self::$version );
 
         // Uploader picker init
         wp_enqueue_script( 'predic-widget-fa-iconpicker-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/fa-iconpicker-field.min.js', array( 'jquery' ), self::$version, true );
