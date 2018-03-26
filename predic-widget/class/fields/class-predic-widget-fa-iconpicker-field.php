@@ -85,7 +85,7 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
         }
 
         // Wrapper around field to avoid changing other uploaders values if more upload fields in same widget
-        $html .= '<section class="predic-widget-fa-iconpicker__wrapper">';
+        $html .= '<section class="predic-widget-fa-iconpicker predic-widget-fa-iconpicker__field">';
 
         if ( $this->label ) {
             $html .= '<label for="' . esc_attr( $this->id ) . '">' . strip_tags( $this->label ) . '</label>';
@@ -142,7 +142,7 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
         wp_enqueue_style( 'predic-widget-fa-iconpicker-field', PREDIC_WIDGET_ASSETS_URL . '/css/fields/fa-iconpicker-field.css', array(), self::$version );
 
         // Uploader picker init
-        wp_enqueue_script( 'predic-widget-fa-iconpicker-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/fa-iconpicker-field.js', array( 'jquery' ), self::$version, true );
+        wp_enqueue_script( 'predic-widget-fa-iconpicker-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/fa-iconpicker-field.min.js', array( 'jquery' ), self::$version, true );
         /*wp_localize_script( 'predic-widget-fa-iconpicker-field', 'predic_widget_uploader_field', array(
             'uploader_title' => esc_html__( 'Upload or select image', 'predic_widget' ),
             'button_text' => esc_html__( 'Select image', 'predic_widget' )

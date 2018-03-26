@@ -167,7 +167,7 @@ class Predic_Widget {
             return;
         }
         
-        wp_enqueue_style( 'predic-widget-admin-style', PREDIC_WIDGET_ASSETS_URL . '/css/main.css', array(), $this->version );
+        wp_enqueue_style( 'predic-widget-admin-style', PREDIC_WIDGET_ASSETS_URL . '/css/admin.min.css', array(), $this->version );
     }
     
     /**

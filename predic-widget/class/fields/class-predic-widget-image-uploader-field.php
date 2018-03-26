@@ -154,7 +154,7 @@ class Predic_Widget_Image_Uploader_Field extends Predic_Widget_Form_Field {
         wp_enqueue_media();
         
         // Uploader picker init
-        wp_enqueue_script( 'predic-widget-uploader-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/uploader-field.js', array( 'jquery' ), self::$version, true );
+        wp_enqueue_script( 'predic-widget-uploader-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/uploader-field.min.js', array( 'jquery' ), self::$version, true );
         wp_localize_script( 'predic-widget-uploader-field', 'predic_widget_uploader_field', array(
            'uploader_title' => esc_html__( 'Upload or select image', 'predic_widget' ),
            'button_text' => esc_html__( 'Select image', 'predic_widget' )
