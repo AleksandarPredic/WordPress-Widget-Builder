@@ -45,6 +45,14 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
      */
     private $default;
 
+	/**
+	 * Icon html holder and it must contain %s to insert icon class
+	 *
+	 * @since 1.0.1
+	 * @var string
+	 */
+	private $holder;
+
     /**
      * Field value from current widget instance
      *
@@ -67,6 +75,7 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
         $this->name = $name; // Name
         $this->label = isset( $atts['label'] ) && !empty( $atts['label'] ) ? $atts['label'] : ''; // Label
         $this->default = isset( $atts['default'] ) && !empty( $atts['default'] ) ? $atts['default'] : ''; // Default
+        $this->holder = isset( $atts['holder'] ) && !empty( $atts['holder'] ) ? $atts['holder'] : '<i class="fa %s" aria-hidden="true"></i>'; // Default
         $this->value = $value; // Value
     }
 
@@ -107,21 +116,19 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
         /**
          * Preview default or selected icon
          */
-        $icon_preview = '';
+        $icon_preview = ! empty( $value ) ? sprintf( $this->holder, esc_attr( $value ) ) : '';
 
         // Image preview
         $html .= '<p class="predic-widget-fa-iconpicker__preview">' . $icon_preview . '</p>';
 
         $html .= '<div class="predic-widget-fa-iconpicker__list">' . $this->get_icons_list() . '</div>';
 
-        // Select button
-        $html .= '<button type="button" class="button predic-widget-fa-iconpicker__select">' . esc_html__( 'Select', 'predic_widget' ) . '</button>';
         // Clear button
         $html .= '<button type="button" class="button predic-widget-fa-iconpicker__clear">' . esc_html__( 'Clear', 'predic_widget' ) . '</button>';
 
         // Default value
         if ( !empty( $this->default ) ) {
-            $html .= '<button type="button" class="button predic-widget-fa-iconpicker__default" data-url="' . esc_url( $this->default ) . '">' . esc_html__( 'Default', 'predic_widget' ) . '</button>';
+            $html .= '<button type="button" class="button predic-widget-fa-iconpicker__default" data-default="' . esc_attr( $this->default ) . '">' . esc_html__( 'Default', 'predic_widget' ) . '</button>';
         }
 
         // Close field wrapper
