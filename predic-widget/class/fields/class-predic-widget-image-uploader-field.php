@@ -148,9 +148,13 @@ class Predic_Widget_Image_Uploader_Field extends Predic_Widget_Form_Field {
 	 * 
 	 * @since 1.0.0
      */
-    public static function admin_scripts() {
-   
-        // Default scripts
+    public static function admin_scripts( $hook ) {
+
+	    if ( 'widgets.php' !== $hook ) {
+		    return;
+	    }
+
+	    // Default scripts
         wp_enqueue_media();
         
         // Uploader picker init
