@@ -57,6 +57,11 @@ The WordPress Widget Boilerplate is licensed under the GPL v2 or later.
 #### 1.0.0 (24th March 2017)
 * Official release
 
+#### 1.0.1 (28th March 2018)
+* FontAwesome iconpicker admin field added
+* Various minor fixes
+* Minor code refactoring
+
 
 ## Developers
 
