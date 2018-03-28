@@ -126,7 +126,6 @@ class Predic_Widget_Color_Field extends Predic_Widget_Form_Field {
     
     /**
      * Add script
-     * We are not using admin_enqueue_scripts hook as it is already too late to hook in
 	 * 
 	 * @since 1.0.0
      */

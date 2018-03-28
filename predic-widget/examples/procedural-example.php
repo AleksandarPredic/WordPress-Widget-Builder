@@ -193,6 +193,21 @@ $config = array(
 			'default' => 'http://placehold.it/350x150' // Optional // accept url only
 		),
 
+		/**
+		 * FontAwesome iconpicker field
+		 *
+		 * Iconpicker type can be used to insert your own icons.
+		 * You need to add styles to widgets admin screen, than use filter "predic_widget_fa_iconpicker_icons_array" to add your icons.
+		 * Last step is to use the "holder" argument to define your icon html element. This is default value "<i class="fa %s" aria-hidden="true"></i>",
+		 * please note that %s stands for your icon class name that will be inserted automatically
+		 */
+		'fa_iconpicker_field_name' => array(
+			'type' => 'fa-iconpicker', // Required
+			'label' => esc_html__( 'Iconpicker FontAwesome', 'textdomain' ), // Optional
+			'default' => 'fa-address-book-o', // Optional
+			'holder' => '' // Optional
+		)
+
 	)
 
 );

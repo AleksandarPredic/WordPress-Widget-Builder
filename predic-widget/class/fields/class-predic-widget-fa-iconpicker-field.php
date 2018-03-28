@@ -71,12 +71,14 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
      * @param mixed $value Field value. Before save the value is NULL
      */
     public function __construct( $atts, $id, $name, $value ) {
+
         $this->id = $id; // Id
         $this->name = $name; // Name
         $this->label = isset( $atts['label'] ) && !empty( $atts['label'] ) ? $atts['label'] : ''; // Label
         $this->default = isset( $atts['default'] ) && !empty( $atts['default'] ) ? $atts['default'] : ''; // Default
         $this->holder = isset( $atts['holder'] ) && !empty( $atts['holder'] ) ? $atts['holder'] : '<i class="fa %s" aria-hidden="true"></i>'; // Default
         $this->value = $value; // Value
+
     }
 
     /**
@@ -93,43 +95,57 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
             return $html;
         }
 
-        // Wrapper around field to avoid changing other uploaders values if more upload fields in same widget
+        // Wrapper around field to avoid changing other same fields in same widget
         $html .= '<section class="predic-widget-fa-iconpicker predic-widget-fa-iconpicker__field">';
 
-        if ( $this->label ) {
-            $html .= '<label for="' . esc_attr( $this->id ) . '">' . strip_tags( $this->label ) . '</label>';
-            $html .= '<br />';
-        }
+	        if ( $this->label ) {
+	            $html .= '<label for="' . esc_attr( $this->id ) . '">' . strip_tags( $this->label ) . '</label>';
+	            $html .= '<br />';
+	        }
 
-        // If value NULL (only first time before save) set default value if passed
-        $value = NULL === $this->value && '' !== $this->default ? $this->default : $this->value;
+	        // If value NULL (only first time before save) set default value if passed
+	        $value = NULL === $this->value && '' !== $this->default ? $this->default : $this->value;
 
-        // Hidden input to store attachment id
-        $html .= '<input class="widefat predic-widget-fa-iconpicker__input" '
-            . 'id="' . esc_attr( $this->id ) . '" '
-            . 'name="' . esc_attr( $this->name ) . '" '
-            . 'type="text" '
-            . 'value="' . esc_attr( $value ) . '" ';
+	        // Hidden input to store icon value
+	        $html .= '<input class="widefat predic-widget-fa-iconpicker__input" '
+	            . 'id="' . esc_attr( $this->id ) . '" '
+	            . 'name="' . esc_attr( $this->name ) . '" '
+	            . 'type="hidden" '
+	            . 'value="' . esc_attr( $value ) . '" ';
 
-        $html .= '/>';
+	        $html .= '/>';
 
-        /**
-         * Preview default or selected icon
-         */
-        $icon_preview = ! empty( $value ) ? sprintf( $this->holder, esc_attr( $value ) ) : '';
+	        /**
+	         * Preview default or selected icon
+	         */
+	        $icon_preview = ! empty( $value ) ? sprintf( $this->holder, esc_attr( $value ) ) : '';
 
-        // Image preview
-        $html .= '<p class="predic-widget-fa-iconpicker__preview">' . $icon_preview . '</p>';
+	        /**
+	         * Image preview
+	         */
+	        $html .= '<p class="predic-widget-fa-iconpicker__preview">' . wp_kses_post( $icon_preview ) . '</p>';
 
-        $html .= '<div class="predic-widget-fa-iconpicker__list">' . $this->get_icons_list() . '</div>';
+		    /**
+		     * Search field
+		     */
+		    $html .= '<input type="text" class="widefat predic-widget-fa-iconpicker__search" placeholder="' . esc_html__( 'Search icons', 'predic_widget' ) . '"/>';
 
-        // Clear button
-        $html .= '<button type="button" class="button predic-widget-fa-iconpicker__clear">' . esc_html__( 'Clear', 'predic_widget' ) . '</button>';
+		    /**
+		     * Icons list
+		     */
+	        $html .= '<div class="predic-widget-fa-iconpicker__list">' . $this->get_icons_list() . '</div>';
 
-        // Default value
-        if ( !empty( $this->default ) ) {
-            $html .= '<button type="button" class="button predic-widget-fa-iconpicker__default" data-default="' . esc_attr( $this->default ) . '">' . esc_html__( 'Default', 'predic_widget' ) . '</button>';
-        }
+		    /**
+		     * Clear button
+		     */
+	        $html .= '<button type="button" class="button predic-widget-fa-iconpicker__clear">' . esc_html__( 'Clear', 'predic_widget' ) . '</button>';
+
+		    /**
+		     * Default value
+		     */
+	        if ( !empty( $this->default ) ) {
+	            $html .= '<button type="button" class="button predic-widget-fa-iconpicker__default" data-default="' . esc_attr( $this->default ) . '">' . esc_html__( 'Default', 'predic_widget' ) . '</button>';
+	        }
 
         // Close field wrapper
         $html .= '</section>';
@@ -139,7 +155,6 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
 
     /**
      * Add script
-     * We are not using admin_enqueue_scripts hook as it is already too late to hook in
      *
      * @since 1.0.1
      */
@@ -150,13 +165,7 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
 	    }
 
         wp_enqueue_style( 'predic-widget-font-awesome', PREDIC_WIDGET_ASSETS_URL . '/vendor/font-awesome/css/font-awesome.min.css', array(), self::$version );
-
-        // Uploader picker init
         wp_enqueue_script( 'predic-widget-fa-iconpicker-field', PREDIC_WIDGET_ASSETS_URL . '/js/fields/fa-iconpicker-field.min.js', array( 'jquery' ), self::$version, true );
-        /*wp_localize_script( 'predic-widget-fa-iconpicker-field', 'predic_widget_uploader_field', array(
-            'uploader_title' => esc_html__( 'Upload or select image', 'predic_widget' ),
-            'button_text' => esc_html__( 'Select image', 'predic_widget' )
-        ));*/
 
     }
 
@@ -164,7 +173,7 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
 
         $output = '';
 
-        $icons = include PREDIC_WIDGET_LIB_PATH . '/font-awesome-icons.php';
+        $icons = apply_filters( 'predic_widget_fa_iconpicker_icons_array', include PREDIC_WIDGET_LIB_PATH . '/font-awesome-icons.php' );
 
         if ( empty( $icons ) || ! is_array( $icons ) ) {
             return $output;
@@ -173,7 +182,10 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
         $output .= '<ul>';
 
         foreach ( $icons as $icon ) {
-            $output .= '<li data-icon="' . esc_js( $icon ) . '"><i class="fa ' . sanitize_text_field( $icon ) . '" aria-hidden="true"></i></li>';
+        	$selected = $this->value === $icon ? ' class="predic-widget-fa-iconpicker__list--selected"' : '';
+            $output .= '<li data-icon="' . esc_js( $icon ) . '"' . $selected . '>
+			                <i class="fa ' . sanitize_text_field( $icon ) . '" aria-hidden="true"></i>
+			            </li>';
         }
 
         $output .= '</ul>';
