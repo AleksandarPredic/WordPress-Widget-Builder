@@ -61,6 +61,7 @@ The WordPress Widget Boilerplate is licensed under the GPL v2 or later.
 * FontAwesome iconpicker admin field added
 * Various minor fixes
 * Minor code refactoring
+* Enable styles and scripts enqueue the WP way
 
 
 ## Developers
