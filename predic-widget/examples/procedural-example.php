@@ -137,14 +137,14 @@ $config = array(
 		 */
 
 		'title' => array(
-			'type' => 'text', // Required  // Input type: text, email, password, search, tel, url, button
+			'type' => 'text', // Required  // Input type: text, password, search, tel, button
 			'label' => esc_html__( 'Title:', 'textdomain' ), // Optional
 			'placeholder' => esc_html__( 'Enter widget title here', 'textdomain' ), // Optional
 			'default' => esc_html__( 'Example widget', 'textdomain' ) // Optional
 		),
 
 		'text_field_name' => array(
-			'type' => 'text', // Required  // Input type: text, email, password, search, tel, url, button
+			'type' => 'text', // Required  // Input type: text, password, search, tel, button
 			'label' => esc_html__( 'Label name:', 'textdomain' ), // Optional
 			'placeholder' => esc_html__( 'Placeholder text', 'textdomain' ), // Optional
 			'default' => esc_html__( 'Default text', 'textdomain' ) // Optional
@@ -192,6 +192,21 @@ $config = array(
 			'label' => esc_html__( 'Label name:', 'textdomain' ), // Optional
 			'default' => 'http://placehold.it/350x150' // Optional // accept url only
 		),
+
+		/**
+		 * FontAwesome iconpicker field
+		 *
+		 * Iconpicker type can be used to insert your own icons.
+		 * You need to add styles to widgets admin screen, than use filter "predic_widget_fa_iconpicker_icons_array" to add your icons.
+		 * Last step is to use the "holder" argument to define your icon html element. This is default value "<i class="fa %s" aria-hidden="true"></i>",
+		 * please note that %s stands for your icon class name that will be inserted automatically
+		 */
+		'fa_iconpicker_field_name' => array(
+			'type' => 'fa-iconpicker', // Required
+			'label' => esc_html__( 'Iconpicker FontAwesome', 'textdomain' ), // Optional
+			'default' => 'fa-address-book-o', // Optional
+			'holder' => '' // Optional
+		)
 
 	)
 

@@ -48,6 +48,7 @@
 
                 // Get attachement id and set preview
                 $input.val($attachment.id);
+                $input.trigger('change'); // Fix for widget not registering change for admin form
                 $preview.html('<img src="' + $attachment.url + '" />');
 
             });
@@ -62,8 +63,10 @@
             event.preventDefault();
 
             var $clicked = $(this);
-            
-            $clicked.parent($classWrapper).find($classInput).val('');
+            var $input = $clicked.parent($classWrapper).find($classInput);
+
+            $input.val('');
+            $input.trigger('change'); // Fix for widget not registering change for admin form
             $clicked.parent($classWrapper).find($classPreview).html('');
             
         });
@@ -74,8 +77,10 @@
 
             var $clicked = $(this);
             var $url = $clicked.data('url');
-            
-            $clicked.parent($classWrapper).find($classInput).val($url);
+            var $input = $clicked.parent($classWrapper).find($classInput);
+
+            $input.val($url);
+            $input.trigger('change'); // Fix for widget not registering change for admin form
             $clicked.parent($classWrapper).find($classPreview).html('<img src="' + $url + '" />');
             
         });

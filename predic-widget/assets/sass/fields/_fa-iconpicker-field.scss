@@ -1,0 +1,51 @@
+/* FontAwesome iconpicker field */
+
+.predic-widget-fa-iconpicker__list {
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  li {
+    position: relative;
+    display: block;
+    float: left;
+    padding: 10px;
+    font-size: 20px;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+
+    &.predic-widget-fa-iconpicker__list--selected {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    i, span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.predic-widget-fa-iconpicker__preview {
+  margin: 10px 0;
+
+  i, span {
+    font-size: 45px;
+  }
+}
+
+button.predic-widget-fa-iconpicker__clear {
+  margin-right: 5px !important;
+}

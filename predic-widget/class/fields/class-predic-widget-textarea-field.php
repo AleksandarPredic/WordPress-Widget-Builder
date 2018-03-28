@@ -11,7 +11,7 @@ class Predic_Widget_Textarea_Field extends Predic_Widget_Form_Field {
 	 * @since 1.0.0
 	 * @var string
 	 */
-    private $version = '1.0.0';
+    private static $version = '1.0.0';
 	
 	/**
 	 * Generated field id
