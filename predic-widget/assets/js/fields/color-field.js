@@ -13,17 +13,31 @@
 
         // Init widgets on page load
         $($colorFieldClass).each(function(){
-            
+
             var $self = $(this);
             var $id = '#' + $self.attr('id');
 
             // Avoid widget base with __i__
             if ( $id.indexOf('__i__') === -1 ) {
-                $self.wpColorPicker();
-            } 
+                $($colorFieldClass).wpColorPicker({
+                    /**
+                     * @param {Event} event - standard jQuery event, produced by whichever
+                     * control was changed.
+                     * @param {Object} ui - standard jQuery UI object, with a color member
+                     * containing a Color.js object.
+                     */
+                    change: function (event, ui) {
+                        var element = event.target;
+                        var color = ui.color.toString();
+
+                        // Trigger change to enable save widget instance button
+                        $(element).val(color).hide().trigger('change');
+                    }
+                });
+            }
 
         });
-        
+
         /**
          * Handle customizer init, adding and update widget form
          * Handle widget admin screen update and adding widgets
@@ -34,8 +48,5 @@
         });
         
     });
-
-    
-
     
 })(jQuery);
