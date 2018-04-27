@@ -99,7 +99,7 @@ class Predic_Widget_Color_Field extends Predic_Widget_Form_Field {
         }
         
         // If value NULL (only first time before save) set empty string to init color picker
-        $value = NULL === $this->value ? '' : $this->value;
+        $value = NULL === $this->value ? $this->default : $this->value;
         
         $html .= '<input class="widefat predic-widget-color__field" '
                 . 'data-id="' . esc_js( $this->id ) . '" '
@@ -107,7 +107,7 @@ class Predic_Widget_Color_Field extends Predic_Widget_Form_Field {
                 . 'name="' . esc_attr( $this->name ) . '" '
                 . 'type="text" '
                 . 'value="' . esc_attr( $value ) . '" ';
- 
+
         if ( !empty( $this->default ) ) {
             $html .= 'data-default-color="' . esc_js( $this->default ) . '" ';
         }
