@@ -53,6 +53,14 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
 	 */
 	private $holder;
 
+	/**
+	 * Icons array to select from
+	 *
+	 * @since 1.0.2
+	 * @var array
+	 */
+	private $icons;
+
     /**
      * Field value from current widget instance
      *
@@ -77,7 +85,8 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
         $this->label = isset( $atts['label'] ) && !empty( $atts['label'] ) ? $atts['label'] : ''; // Label
         $this->default = isset( $atts['default'] ) && !empty( $atts['default'] ) ? $atts['default'] : ''; // Default
         $this->holder = isset( $atts['holder'] ) && !empty( $atts['holder'] ) ? $atts['holder'] : '<i class="fa %s" aria-hidden="true"></i>'; // Default
-        $this->value = $value; // Value
+	    $this->icons = isset( $atts['icons'] ) && is_array( $atts['icons'] ) && !empty( $atts['icons'] ) ? $atts['icons'] : array(); // Label
+	    $this->value = $value; // Value
 
     }
 
@@ -173,7 +182,8 @@ class Predic_Widget_Fa_Iconpicker_Field extends Predic_Widget_Form_Field {
 
         $output = '';
 
-        $icons = apply_filters( 'predic_widget_fa_iconpicker_icons_array', include PREDIC_WIDGET_LIB_PATH . '/font-awesome-icons.php' );
+        $icons = ! empty( $this->icons ) ? $this->icons : include PREDIC_WIDGET_LIB_PATH . '/font-awesome-icons.php';
+	    $icons = apply_filters( 'predic_widget_fa_iconpicker_icons_array', $icons, $this->id );
 
         if ( empty( $icons ) || ! is_array( $icons ) ) {
             return $output;

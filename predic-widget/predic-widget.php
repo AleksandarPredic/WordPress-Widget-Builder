@@ -3,7 +3,7 @@
  * Plugin Name: Predic widget builder framework
  * Plugin URI: 
  * Description: The WordPress Widget Builder is a very simple framework that enables you to pass configuration array from which it will automatically create widget admin and let you worried only about widget frontend.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Aleksandar Predic
  * Author URI: https://acapredic.com/
  * Requires at least: 4.0
@@ -46,7 +46,7 @@ class Predic_Widget {
      * @since 1.0.0
      * @var string 
      */
-    private $version = '1.0.1';
+    private $version = '1.0.2';
 
     /**
      * Configuration arrays to create widgets from
