@@ -248,7 +248,17 @@ class Example_Widget {
 					'type' => 'fa-iconpicker', // Required
 					'label' => esc_html__( 'Iconpicker FontAwesome', 'textdomain' ), // Optional
 					'default' => 'fa-address-book-o', // Optional
-					'holder' => '' // Optional
+					'holder' => '', // Optional
+					'icons' => array (
+					    'fa-500px',
+					    'fa-address-book',
+					    'fa-address-book-o',
+					    'fa-address-card',
+					    'fa-address-card-o',
+					    'fa-adjust',
+					    'fa-adn',
+					    'fa-align-center',
+				    ) // Optional to use only selected icons
 				)
 				
             )
